@@ -1,0 +1,20 @@
+NOTE: The licenses for the following assets are taken at face value
+from the sites they are downloaded, if there is any mistake or you think
+your assets are used incorrectly or shouldn't be used, contact the service
+that has them and open an issue in our GitHub so we can correct it.
+
+Thanks,
+The Team
+
+===============================================================================
+
+Fonts:
+    Name: Catamaran
+    Author: Vladimir Nikolic
+    License: 100% free font
+    URL: https://www.dafont.com/es/catamaran.font
+
+    Name: Existence Light
+    Author: Yeah Noah
+    License: 100% free font
+    URL: https://www.dafont.com/es/existence.font
