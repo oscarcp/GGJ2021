@@ -1,16 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/images/player.png" type="Texture" id=1]
 [ext_resource path="res://characters/player.gd" type="Script" id=2]
+[ext_resource path="res://assets/audio/step.ogg" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 88 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 53.3333, 106.667 )
 
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 0.75, 0.75 )
 collision_layer = 2
 collision_mask = 29
 script = ExtResource( 2 )
+speed = Vector2( 100, 500 )
 
 [node name="player" type="Sprite" parent="."]
 position = Vector2( 0, -90 )
@@ -23,6 +28,7 @@ shape = SubResource( 1 )
 [node name="Animations" type="AnimationPlayer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -117.333 )
 offset = Vector2( 0, -275 )
 current = true
 process_mode = 0
@@ -31,3 +37,14 @@ smoothing_enabled = true
 offset_v = 0.3
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+position = Vector2( 0, -89.3333 )
+shape = SubResource( 2 )
+
+[node name="PlayerStep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
