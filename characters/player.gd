@@ -3,12 +3,14 @@ extends Actor
 func play_steps_audio() -> void:
     var step_sound = get_node("PlayerStep")
     while Input.is_action_pressed("move_right") or \
-          Input.is_action_pressed("move_left") and \
-          step_sound.playing == false:
-        if step_sound.playing:
-            return
-        else:
+          Input.is_action_pressed("move_left"):
+        step_sound.pitch_scale = 1.0
+        if Input.is_action_pressed("run"):
+            step_sound.pitch_scale = 1.25
+        if not step_sound.playing:
             step_sound.playing = true
+        else:
+            return
     step_sound.stop()
 
 func _physics_process(delta: float) -> void:

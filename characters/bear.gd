@@ -2,6 +2,7 @@ extends "res://characters/actor.gd"
 
 func play_growl_audio() -> void:
     var step_sound = get_node("BearGrowl2D")
+    # GODDAMN logic b*shit!
     while step_sound.playing == false:
         if step_sound.playing:
             return
