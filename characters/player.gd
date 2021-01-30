@@ -1,15 +1,25 @@
 extends Actor
 
+func play_steps_audio() -> void:
+    var step_sound = get_node("PlayerStep")
+    while Input.is_action_pressed("move_right") or \
+          Input.is_action_pressed("move_left") and \
+          step_sound.playing == false:
+        if step_sound.playing:
+            return
+        else:
+            step_sound.playing = true
+    step_sound.stop()
+
 func _physics_process(delta: float) -> void:
     var is_jump_interrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
     var direction: = get_direction()
     _velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
     _velocity = move_and_slide(_velocity, FLOOR_NORMAL)
 
-func play_steps_audio() -> void:
-    if Input.is
-func get_direction() -> Vector2:
 
+func get_direction() -> Vector2:
+    play_steps_audio()
     return Vector2(
         Input.get_action_strength("move_right") -
         Input.get_action_strength("move_left"),
@@ -31,3 +41,5 @@ func calculate_move_velocity(linear_velocity: Vector2,
     if is_jump_interrupted:
         out.y = 0.0
     return out
+
+
