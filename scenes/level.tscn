@@ -1,16 +1,15 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/images/sky_night.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/3.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/sky_night2.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/ground.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/star.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/polaris.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/1.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/2.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/tinder.png" type="Texture" id=8]
-[ext_resource path="res://characters/bear.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/images/igloo.png" type="Texture" id=6]
+[ext_resource path="res://items/tinder.tscn" type="PackedScene" id=7]
+[ext_resource path="res://characters/bear2.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/audio/cold_wind.ogg" type="AudioStream" id=10]
-[ext_resource path="res://assets/audio/ambient1.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/cold_wind_2.ogg" type="AudioStream" id=11]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.0658307, 0.495298, 0.92163 )
@@ -73,8 +72,8 @@ scale = 0.5
 [node name="World" type="Node2D"]
 
 [node name="Sky" type="Sprite" parent="."]
-position = Vector2( 1520, 617 )
-scale = Vector2( 8882, 4880 )
+position = Vector2( 1895.38, 94 )
+scale = Vector2( 6771.25, 1.576 )
 texture = ExtResource( 2 )
 
 [node name="Stars" type="Particles2D" parent="."]
@@ -123,7 +122,7 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-position = Vector2( 2670, 173 )
+position = Vector2( 2670, 229 )
 shape = SubResource( 9 )
 
 [node name="DEBUG_COLLISION" type="CollisionShape2D" parent="Ground"]
@@ -134,32 +133,42 @@ shape = SubResource( 10 )
 position = Vector2( -747, 16 )
 shape = SubResource( 10 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 633, 362 )
+[node name="igloo" type="TextureRect" parent="."]
+margin_left = -251.0
+margin_top = 169.0
+margin_right = 1029.0
+margin_bottom = 713.0
 texture = ExtResource( 6 )
-
-[node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 597, 360 )
-texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 182.168, 213.893 )
+position = Vector2( 318, 604 )
+scale = Vector2( 1, 1 )
 gravity = 3000.0
 
-[node name="tinder_example" type="Sprite" parent="."]
-position = Vector2( 784, 564 )
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 8 )
-
-[node name="Bear" parent="." instance=ExtResource( 9 )]
-position = Vector2( 3698, 468 )
+[node name="Tinder" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1194, 560 )
 
 [node name="WindSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+volume_db = -5.0
 autoplay = true
 
 [node name="SnowWind" type="Particles2D" parent="."]
-position = Vector2( 3301, -214 )
+position = Vector2( 3436, -456 )
+amount = 4096
+lifetime = 10.0
+preprocess = 61.62
+randomness = 1.0
+fixed_fps = 60
+visibility_rect = Rect2( -4000, 0, 4000, 1000 )
+process_material = SubResource( 11 )
+texture = ExtResource( 4 )
+
+[node name="SnowWind2" type="Particles2D" parent="."]
+position = Vector2( 2227, -500 )
 amount = 4096
 lifetime = 10.0
 preprocess = 61.62
@@ -173,3 +182,6 @@ texture = ExtResource( 4 )
 stream = ExtResource( 11 )
 volume_db = -3.2
 autoplay = true
+
+[node name="BearRigged" parent="." instance=ExtResource( 9 )]
+position = Vector2( 3713, 403 )

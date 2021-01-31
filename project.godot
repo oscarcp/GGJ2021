@@ -104,4 +104,5 @@ quality/shadows/filter_mode=2
 quality/subsurface_scattering/quality=2
 quality/subsurface_scattering/follow_surface=true
 quality/voxel_cone_tracing/high_quality=true
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
