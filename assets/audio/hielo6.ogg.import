@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hielo6.ogg-4250ba2a6a7a9a71a645ec30f3703b61.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/hielo6.ogg"
+dest_files=[ "res://.import/hielo6.ogg-4250ba2a6a7a9a71a645ec30f3703b61.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

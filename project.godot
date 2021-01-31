@@ -26,6 +26,10 @@ run/main_scene="res://scenes/menu.tscn"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
 
+[autoload]
+
+PlayerData="*res://scenes/autoload/PlayerData.tscn"
+
 [debug]
 
 settings/fps/force_fps=60

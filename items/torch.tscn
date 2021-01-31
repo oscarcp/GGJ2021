@@ -1,15 +1,89 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/images/torch.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/torchoff.png" type="Texture" id=2]
+[ext_resource path="res://items/torch.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 48, 276 )
 
-[node name="Torch" type="RigidBody2D"]
+[sub_resource type="Animation" id=2]
+resource_name = "attack"
+length = 1.75
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TorchOn:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -22.8254, 260.317 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TorchOn:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 44.2565, 0.0, 57.3046, 28.8348, 6.88057, 45.3392, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
-[node name="Sprite" type="Sprite" parent="."]
+[sub_resource type="Animation" id=3]
+resource_name = "dissapear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Torch" type="KinematicBody2D"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.3, 0.3 )
+script = ExtResource( 3 )
+
+[node name="TorchOn" type="Sprite" parent="."]
+position = Vector2( -22.8254, 260.317 )
 texture = ExtResource( 1 )
+offset = Vector2( 22.8254, -260.317 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -20, 41 )
 shape = SubResource( 1 )
+
+[node name="TorchOff" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 2 )
+anims/dissapear = SubResource( 3 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
